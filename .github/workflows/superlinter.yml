@@ -1,17 +1,17 @@
 ---
 name: Lint
-
+ 
 on: # yamllint disable-line rule:truthy
   push: null
   pull_request: null
-
+ 
 permissions: {}
-
+ 
 jobs:
   build:
     name: Lint
     runs-on: ubuntu-latest
-
+ 
     permissions:
       # contents permission to clone the repository
       contents: read
@@ -23,7 +23,7 @@ jobs:
       # To report GitHub Actions status checks. Omit if you don't need
       # to update commit status
       statuses: write
-
+ 
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
@@ -32,9 +32,9 @@ jobs:
           # list of files that changed across commits
           fetch-depth: 0
           persist-credentials: false
-
+ 
       - name: Super-linter
-        uses: super-linter/super-linter@v8.5.0 # x-release-please-version
+        uses: super-linter/super-linter@v5 # x-release-please-version
         env:
           # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
